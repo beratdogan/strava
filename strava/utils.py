@@ -52,7 +52,6 @@ def get_leaders(location):
                     'total_distance': 0,
                     'total_moving_time': 0,
                     'total_elapsed_time': 0,
-                    'avg_speed': entry['distance'] / entry['moving_time'],
                     'count': 0,
                 }
 
@@ -60,6 +59,9 @@ def get_leaders(location):
             athletes[entry['athlete_id']]['total_distance'] += entry['distance']
             athletes[entry['athlete_id']]['total_moving_time'] += entry['moving_time']
             athletes[entry['athlete_id']]['total_elapsed_time'] += entry['elapsed_time']
+
+    for athlete_id, athlete in athletes.iteritems():
+        athlete['avg_speed'] = athlete['total_distance'] / athlete['total_moving_time']
 
     return athletes
 
