@@ -120,7 +120,7 @@ def normalize_scores(athletes):
 
 @app.route('/', defaults={'location': 'istanbul'})
 @app.route('/<string:location>')
-def active_atheletes(location):
+def active_athletes(location):
     athletes = get_leaders(location.lower())
 
     filtered_athletes = {k: v for k, v in athletes.iteritems() if v['count'] > 1}
